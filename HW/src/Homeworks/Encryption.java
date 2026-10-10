@@ -17,7 +17,7 @@ public class Encryption {
 
         m = m ^ k;
         System.out.println("Зашифрованное сообщение " + m);
-
+        System.out.println("33322");
 
         // дешифруем ...
         m = m ^ k;
