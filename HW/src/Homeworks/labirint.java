@@ -12,10 +12,10 @@ public class labirint {
      //пересчет позиции и состояния
 
     public static int[][] field = {{1, 0, 1, 1, 1},
-                            {1, 0, 0, 1, 1},
-                            {1, 1, 0, 1, 1},
-                            {1, 1, 0, 0, 1},
-                            {1, 1, 1, 0, 1}};
+                                    {1, 0, 0, 1, 1},
+                                    {1, 1, 0, 1, 1},
+                                    {1, 1, 0, 0, 1},
+                                    {1, 1, 1, 0, 1}};
 
     public static char[][] visibleField = {{'-', '*', '-', '-', '-'},
                                             {'-', '-', '-', '-', '-'},
@@ -25,20 +25,77 @@ public class labirint {
     public static int rowPos = 0;
     public static int colPos = 1;
     public static int stepCounter = 0;
-    public static int rowExit = 0;
-    public static int colExit = 0;
+    public static int rowExit = 4;
+    public static int colExit = 3;
 
     public static void main(String[] args) {
         printField();
-        String direction = inputDirection();
-        switch (direction){
-            case "u":
-                if (rowPos > 0 && field[rowPos - 1][colPos] == 0) {
-                    visibleField[rowPos][colPos] = '#';
-                    rowPos--;
-                    visibleField[rowPos - 1][colPos] = '*';
-                }
+        char wall = '\u2588';
+
+        while (rowPos != rowExit || colPos != colExit) {
+            String direction = inputDirection();
+            switch (direction) {
+                case "u":
+                    if (rowPos > 0) {
+                        if (field[rowPos - 1][colPos] == 0) {
+                            visibleField[rowPos][colPos] = '#';
+                            rowPos--;
+                            visibleField[rowPos][colPos] = '*';
+                        }
+                        else{
+                            System.out.println("Тут стенка!");
+                            visibleField[rowPos - 1][colPos] = wall;
+                        }
+                    }
+                    break;
+
+
+                case "d":
+                    if (rowPos < field.length - 1) {
+                        if (field[rowPos + 1][colPos] == 0) {
+                            visibleField[rowPos][colPos] = '#';
+                            rowPos++;
+                            visibleField[rowPos][colPos] = '*';
+                        }
+                        else {
+                            System.out.println("Тут стенка!");
+                            visibleField[rowPos + 1][colPos] = wall;
+                        }
+                    }
+                    break;
+
+                case "l":
+                    if (colPos > 0) {
+                        if(field[rowPos][colPos - 1] == 0) {
+                            visibleField[rowPos][colPos] = '#';
+                            colPos--;
+                            visibleField[rowPos][colPos] = '*';
+                        }
+                        else {
+                            System.out.println("Тут стенка!");
+                            visibleField[rowPos][colPos - 1] = wall;
+                        }
+                    }
+                    break;
+
+                case "r":
+                    if (colPos < field[0].length - 1) {
+                        if (field[rowPos][colPos + 1] == 0) {
+                            visibleField[rowPos][colPos] = '#';
+                            colPos++;
+                            visibleField[rowPos][colPos] = '*';
+                        }
+                        else {
+                            System.out.println("Тут стенка!");
+                            visibleField[rowPos][colPos + 1] = wall;
+                        }
+                    }
+                    break;
+            }
+            printField();
         }
+        System.out.println("Win!! Counter: " + stepCounter);
+
 
 
 
