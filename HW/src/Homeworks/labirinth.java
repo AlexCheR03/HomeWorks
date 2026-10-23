@@ -2,8 +2,7 @@ package Homeworks;
 
 import java.util.Scanner;
 
-public class labirint {
-
+public class labirinth {
 
     //шаги
     // определение структуры данных
@@ -97,8 +96,6 @@ public class labirint {
         System.out.println("Win!! Counter: " + stepCounter);
 
 
-
-
     }
 
     public static void printField() {
@@ -126,6 +123,5 @@ public class labirint {
             }
         }
     }
-
 
 }
