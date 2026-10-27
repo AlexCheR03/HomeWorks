@@ -5,9 +5,6 @@ public class sort {
         int[] arr = {1, 3, 20, 0, -10, 11, 1, 5}; //length is 5
 
         printArr(sortV1(arr));
-
-
-
     }
 
 
