@@ -27,6 +27,7 @@ public class Strings {
             }
         }
         printDict(dict);
+        System.out.println("Максимальная длинна строки составляет " + max_len_line + " символов");
     }
 
 
